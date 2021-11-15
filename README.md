@@ -1,14 +1,19 @@
 
-> Open this page at [https://quangan186.github.io/asm-2---microbit-project/](https://quangan186.github.io/asm-2---microbit-project/)
+### Microbit Rock, Paper and Scissor
 
-## Use as Extension
+## Description
+Microbit Rock, Paper and Scissor helps users have a relax time after working by playing rock, paper and scissor against Microbit.
 
-This repository can be added as an **extension** in MakeCode.
+Users will choose rock, paper or scissor in 5 seconds and when the time is 0, Microbit will pick randomly rock, paper or scissor. 
 
-* open [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/quangan186/asm-2---microbit-project** and import
+Based on the rules that rock beats scissor, scissor beats paper and paper beats rock, Microbit will calculate the score between player and fake player (Microbit). If the player or Microbit scores 2 points, the game will be done.
+
+## How to use
+Press A to choose Scissor
+Press B to choose Rock
+Press both A and B to choose Paper
+Press Microbit Logo to start the game
+Press Pin 0 to see the History
 
 ## Edit this project ![Build status badge](https://github.com/quangan186/asm-2---microbit-project/workflows/MakeCode/badge.svg)
 
