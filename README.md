@@ -1,5 +1,5 @@
 
-### Microbit Rock, Paper and Scissor
+# Microbit Rock, Paper and Scissor
 
 ## Description
 Microbit Rock, Paper and Scissor helps users have a relax time after working by playing rock, paper and scissor against Microbit.
