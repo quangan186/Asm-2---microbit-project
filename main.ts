@@ -1,3 +1,12 @@
+function countdown () {
+    index2 = 6
+    while (index2 > 0) {
+        index2 = index2 - 1
+        basic.showNumber(index2)
+        basic.pause(500)
+    }
+}
+let index2 = 0
 music.startMelody(music.builtInMelody(Melodies.Prelude), MelodyOptions.OnceInBackground)
 music.setVolume(127)
 basic.showString("R")
