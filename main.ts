@@ -30,14 +30,6 @@ function compare () {
     basic.showString(":")
     basic.showNumber(scoreP)
 }
-function countdown () {
-    index2 = 6
-    while (index2 > 0) {
-        index2 = index2 - 1
-        basic.showNumber(index2)
-        basic.pause(500)
-    }
-}
 input.onButtonPressed(Button.A, function () {
     playerhand = 1
     basic.showIcon(IconNames.Scissors)
@@ -76,9 +68,24 @@ input.onButtonPressed(Button.B, function () {
 input.onGesture(Gesture.Shake, function () {
     gameplay()
 })
+function count_Down () {
+    timer = 6
+    for (let index = 0; index < 6; index++) {
+        music.playTone(392, music.beat(BeatFraction.Eighth))
+        timer += -1
+        basic.showNumber(timer)
+        basic.pause(1000)
+        if (timer == 1) {
+            music.playTone(392, music.beat(BeatFraction.Breve))
+        }
+        if (timer == 0) {
+            music.stopAllSounds()
+        }
+    }
+}
 function gameplay () {
     while (scoreC <= 2 && scoreP <= 2) {
-        countdown()
+        count_Down()
         playerBot()
         compare()
         if (scoreC == 2) {
@@ -93,7 +100,7 @@ function gameplay () {
         }
     }
 }
-let index2 = 0
+let timer = 0
 let scoreC = 0
 let scoreP = 0
 let hand = 0
