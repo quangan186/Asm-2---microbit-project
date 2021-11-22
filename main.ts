@@ -25,6 +25,10 @@ function compare () {
                 scoreP += 1
             }
         }
+    } else if (playerhand == 0) {
+        music.playMelody("G E E D C - - - ", 120)
+        basic.showString("Lose")
+        scoreC += 1
     } else {
         if (hand == 1) {
             music.playMelody("G E E D C - - - ", 120)
