@@ -6,6 +6,17 @@ function countdown () {
         basic.pause(500)
     }
 }
+input.onButtonPressed(Button.A, function () {
+    playerhand = 1
+    basic.showLeds(`
+        # . . . #
+        . # . # .
+        . . # . .
+        # # . # #
+        # # . # #
+        `)
+})
+let playerhand = 0
 let index2 = 0
 music.startMelody(music.builtInMelody(Melodies.Prelude), MelodyOptions.OnceInBackground)
 music.setVolume(127)
