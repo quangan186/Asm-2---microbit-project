@@ -1,48 +1,33 @@
 function compare () {
-    basic.pause(200)
-    if (playerhand == hand) {
-        music.playMelody("E E - - - - - - ", 120)
-        basic.showString("Draw")
-    } else if (playerhand < 3) {
-        if (playerhand == 1) {
-            if (hand == 2) {
-                music.playMelody("G E E D C - - - ", 120)
-                basic.showString("Lose")
-                scoreC += 1
-            } else {
-                music.playMelody("C D E C G - - - ", 120)
-                basic.showString("Win")
-                scoreP += 1
-            }
+    if (playerhand < hand) {
+        if (playerhand == 1 && hand == 3) {
+            music.playMelody("C D E C G - - - ", 120)
+            basic.showString("WIN")
+            scoreP += 1
         } else {
-            if (hand == 3) {
-                music.playMelody("G E E D C - - - ", 120)
-                basic.showString("Lose")
-                scoreC += 1
-            } else {
-                music.playMelody("C D E C G - - - ", 120)
-                basic.showString("Win")
-                scoreP += 1
-            }
-        }
-    } else if (playerhand == 0) {
-        music.playMelody("G E E D C - - - ", 120)
-        basic.showString("Lose")
-        scoreC += 1
-    } else {
-        if (hand == 1) {
             music.playMelody("G E E D C - - - ", 120)
-            basic.showString("Lose")
+            basic.showString("LOSE")
+            scoreC += 1
+        }
+    } else if (playerhand == hand) {
+        music.playMelody("E E - - - - - - ", 120)
+        basic.showString("DRAW")
+    } else {
+        if (playerhand == 3 && hand == 1) {
+            music.playMelody("G E E D C - - - ", 120)
+            basic.showString("LOSE")
             scoreC += 1
         } else {
             music.playMelody("C D E C G - - - ", 120)
-            basic.showString("Win")
+            basic.showString("WIN")
             scoreP += 1
         }
     }
     basic.showString("C")
+    basic.showString(":")
     basic.showNumber(scoreC)
     basic.showString("P")
+    basic.showString(":")
     basic.showNumber(scoreP)
 }
 function countdown () {
@@ -78,16 +63,6 @@ input.onButtonPressed(Button.AB, function () {
     playerhand = 3
     basic.showIcon(IconNames.Square)
 })
-function bo3 () {
-    if (scoreC == 2) {
-        basic.showString("You lose")
-        basic.clearScreen()
-    }
-    if (scoreP == 2) {
-        basic.showString("You win")
-        basic.clearScreen()
-    }
-}
 input.onButtonPressed(Button.B, function () {
     playerhand = 2
     basic.showLeds(`
@@ -99,17 +74,28 @@ input.onButtonPressed(Button.B, function () {
         `)
 })
 input.onGesture(Gesture.Shake, function () {
-    countdown()
     gameplay()
 })
 function gameplay () {
-    playerBot()
-    compare()
-    bo3()
+    while (scoreC <= 2 && scoreP <= 2) {
+        countdown()
+        playerBot()
+        compare()
+        if (scoreC == 2) {
+            basic.showString("YOU LOSE")
+            basic.clearScreen()
+            break;
+        }
+        if (scoreP == 2) {
+            basic.showString("YOU WIN")
+            basic.clearScreen()
+            break;
+        }
+    }
 }
 let index2 = 0
-let scoreP = 0
 let scoreC = 0
+let scoreP = 0
 let hand = 0
 let playerhand = 0
 music.startMelody(music.builtInMelody(Melodies.Prelude), MelodyOptions.OnceInBackground)
