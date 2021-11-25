@@ -104,7 +104,7 @@ function history () {
         }
     }
     for (let scr of high_score_list) {
-        if (max_score < scr) {
+        if (max_score <= scr) {
             max_score = scr
         }
     }
@@ -119,6 +119,7 @@ function history () {
     basic.pause(500)
     basic.showString("YOUR HIGHEST SCORE:")
     basic.showNumber(max_score)
+    basic.pause(1000)
     basic.clearScreen()
 }
 input.onButtonPressed(Button.B, function () {
@@ -169,6 +170,7 @@ function endless () {
     scoreC = 0
     scoreP = 0
     while (scoreC < 1) {
+        playerhand = 0
         countdown()
         playerBot()
         compare()
