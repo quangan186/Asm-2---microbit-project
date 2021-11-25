@@ -92,7 +92,7 @@ def on_button_pressed_ab():
 input.on_button_pressed(Button.AB, on_button_pressed_ab)
 
 def history():
-    global win, lose
+    global win, lose, max_score
     basic.show_string("HISTORY")
     win = 0
     lose = 0
@@ -183,6 +183,7 @@ def endless():
             break
     high_score_list.append(scoreP)
 result = 0
+max_score = 0
 lose = 0
 win = 0
 current_index = 0
@@ -194,7 +195,7 @@ playerhand = 0
 pause2 = 0
 high_score_list: List[number] = []
 history_list: List[number] = []
-high_score_list = []
+high_score_list = [0]
 history_list = []
 music.start_melody(music.built_in_melody(Melodies.PRELUDE),
     MelodyOptions.ONCE_IN_BACKGROUND)

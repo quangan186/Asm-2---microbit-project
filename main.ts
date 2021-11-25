@@ -196,7 +196,7 @@ let playerhand = 0
 let pause2 = 0
 let high_score_list: number[] = []
 let history_list : number[] = []
-high_score_list = []
+high_score_list = [0]
 history_list = []
 music.startMelody(music.builtInMelody(Melodies.Prelude), MelodyOptions.OnceInBackground)
 music.setVolume(127)
