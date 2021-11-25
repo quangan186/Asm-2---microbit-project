@@ -95,11 +95,17 @@ function history () {
     basic.showString("HISTORY")
     win = 0
     lose = 0
+    max_score = high_score_list[0]
     for (let res of history_list) {
         if (res == 0) {
             lose += _py.py_array_count(history_list, res)
         } else {
             win += _py.py_array_count(history_list, res)
+        }
+    }
+    for (let scr of high_score_list) {
+        if (max_score < scr) {
+            max_score = scr
         }
     }
     basic.showString("HISTORY")
@@ -111,6 +117,8 @@ function history () {
     basic.showString(":")
     basic.showNumber(lose)
     basic.pause(500)
+    basic.showString("YOUR HIGHEST SCORE:")
+    basic.showNumber(max_score)
     basic.clearScreen()
 }
 input.onButtonPressed(Button.B, function () {
@@ -126,10 +134,7 @@ input.onButtonPressed(Button.B, function () {
 input.onPinPressed(TouchPin.P1, function () {
     pause2 = 1
 })
-input.onGesture(Gesture.Shake, function () {
-    gameplay()
-})
-function gameplay () {
+function Bo3 () {
     basic.showString("BEST OF 3")
     scoreC = 0
     scoreP = 0
@@ -153,7 +158,33 @@ function gameplay () {
     }
     history_list.push(result)
 }
+input.onGesture(Gesture.Shake, function () {
+    Bo3()
+})
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    endless()
+})
+function endless () {
+    basic.showString("ENDLESS MODE")
+    scoreC = 0
+    scoreP = 0
+    while (scoreC < 1) {
+        countdown()
+        playerBot()
+        compare()
+        if (scoreC == 1) {
+            basic.showString("GAME OVER")
+            basic.showString("YOUR SCORE:")
+            basic.pause(1000)
+            basic.showNumber(scoreP)
+            basic.clearScreen()
+            break;
+        }
+    }
+    high_score_list.push(scoreP)
+}
 let result = 0
+let max_score = 0
 let lose = 0
 let win = 0
 let current_index = 0
@@ -163,7 +194,9 @@ let scoreP = 0
 let hand = 0
 let playerhand = 0
 let pause2 = 0
+let high_score_list: number[] = []
 let history_list : number[] = []
+high_score_list = []
 history_list = []
 music.startMelody(music.builtInMelody(Melodies.Prelude), MelodyOptions.OnceInBackground)
 music.setVolume(127)
