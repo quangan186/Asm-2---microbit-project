@@ -6,7 +6,7 @@ Microbit Rock, Paper and Scissors helps users have a relax time after working by
 
 Users will choose rock, paper or scissors in 5 seconds and when the time is 0, Microbit will pick randomly rock, paper or scissors. 
 
-Based on the rules that rock beats scissors, scissors beats paper and paper beats rock, Microbit will calculate the score between player and fake player (Microbit). If the player or Microbit scores 2 points, the game will be done.
+Based on the rules that rock beats scissors, scissors beats paper and paper beats rock, Microbit will calculate the score between player and fake player (Microbit). In Best of 3 mode, if the player or Microbit scores 2 points, the game will be done. On the other hand, in the Endless mode, if the Microbit wins 1 game, the game will be done
 
 ## How to use
 Press A to choose Scissors
@@ -15,13 +15,11 @@ Press B to choose Rock
 
 Press both A and B to choose Paper
 
-Press Microbit's Logo to start or restart the game
-
-Press Pin 0 to see the History
-
+Press Microbit's Logo to play Endless Mode
+Press Pin 0 to resume the game
 Press Pin 1 to pause the game
 
-Press Pin 2 to resume the game
+Press Pin 2 to see the History
 
 ## Edit this project ![Build status badge](https://github.com/quangan186/asm-2---microbit-project/workflows/MakeCode/badge.svg)
 
