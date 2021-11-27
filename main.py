@@ -99,13 +99,12 @@ def history():
     max_score = high_score_list[0]
     for res in history_list:
         if res == 0:
-            lose += history_list.count(res)
+            lose = history_list.count(res)
         else:
-            win += history_list.count(res)
+            win = history_list.count(res)
     for scr in high_score_list:
-        if max_score < scr:
+        if max_score <= scr:
             max_score = scr
-    basic.show_string("HISTORY")
     basic.show_string("W")
     basic.show_string(":")
     basic.show_number(win)
@@ -147,15 +146,16 @@ def Bo3():
         compare()
         if scoreC == 2:
             result = 0
+            history_list.append(result)
             basic.show_string("YOU LOSE")
             basic.clear_screen()
             break
         if scoreP == 2:
             result = 1
+            history_list.append(result)
             basic.show_string("YOU WIN")
             basic.clear_screen()
             break
-    history_list.append(result)
 
 def on_gesture_shake():
     Bo3()
@@ -166,11 +166,12 @@ def on_logo_pressed():
 input.on_logo_event(TouchButtonEvent.PRESSED, on_logo_pressed)
 
 def endless():
-    global scoreC, scoreP
+    global scoreC, scoreP, playerhand
     basic.show_string("ENDLESS MODE")
     scoreC = 0
     scoreP = 0
     while scoreC < 1:
+        playerhand = 0
         countdown()
         playerBot()
         compare()
@@ -184,8 +185,6 @@ def endless():
     high_score_list.append(scoreP)
 result = 0
 max_score = 0
-lose = 0
-win = 0
 current_index = 0
 index2 = 0
 scoreC = 0
@@ -195,6 +194,8 @@ playerhand = 0
 pause2 = 0
 high_score_list: List[number] = []
 history_list: List[number] = []
+win = 0
+lose = 0
 high_score_list = [0]
 history_list = []
 music.start_melody(music.built_in_melody(Melodies.PRELUDE),
