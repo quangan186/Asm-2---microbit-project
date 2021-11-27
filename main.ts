@@ -175,12 +175,12 @@ function Bo3 () {
         }
         if (player_score == 2) {
             result = 1
-            history_list.push(result)
             basic.showString("YOU WIN")
             basic.clearScreen()
             break;
         }
     }
+    history_list.push(result)
 }
 input.onGesture(Gesture.Shake, function () {
     Bo3()
@@ -202,11 +202,11 @@ function endless () {
             basic.showString("YOUR SCORE:")
             basic.pause(1000)
             basic.showNumber(player_score)
+            high_score_list.push(player_score)
             basic.clearScreen()
             break;
         }
     }
-    high_score_list.push(player_score)
 }
 let result = 0
 let max_score = 0
