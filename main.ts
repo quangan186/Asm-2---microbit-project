@@ -139,7 +139,7 @@ function history () {
         `)
     basic.showNumber(lose)
     basic.pause(500)
-    basic.showString(" HIGH SCORE:")
+    basic.showString("HIGH SCORE:")
     basic.showNumber(max_score)
     basic.pause(1000)
     basic.clearScreen()
