@@ -17,6 +17,30 @@ function player_bot () {
 input.onPinPressed(TouchPin.P0, function () {
     pause2 = 0
 })
+function introduction () {
+    music.startMelody(music.builtInMelody(Melodies.Prelude), MelodyOptions.OnceInBackground)
+    music.setVolume(127)
+    basic.showString("R")
+    basic.pause(700)
+    basic.showLeds(`
+        . . . . .
+        . . . # #
+        # # # # #
+        . . . # #
+        . . . . .
+        `)
+    basic.pause(1000)
+    basic.showString("P")
+    basic.pause(700)
+    basic.showIcon(IconNames.Square)
+    basic.pause(1000)
+    basic.showString("S")
+    basic.pause(700)
+    basic.showIcon(IconNames.Scissors)
+    basic.pause(1000)
+    basic.clearScreen()
+    basic.pause(1000)
+}
 function compare () {
     if (player_choice < bot_choice) {
         if (player_choice == 1 && bot_choice == 3) {
@@ -98,6 +122,28 @@ input.onButtonPressed(Button.A, function () {
 input.onPinPressed(TouchPin.P2, function () {
     history()
 })
+function tutorial () {
+    basic.showString("TUTORIAL")
+    basic.pause(500)
+    basic.showString("A")
+    basic.showString("=")
+    basic.showIcon(IconNames.Scissors)
+    basic.pause(500)
+    basic.showString("B")
+    basic.showString("=")
+    basic.showLeds(`
+        . . . . .
+        . . . # #
+        # # # # #
+        . . . # #
+        . . . . .
+        `)
+    basic.pause(500)
+    basic.showString("A+B")
+    basic.showString("=")
+    basic.showIcon(IconNames.Square)
+    basic.clearScreen()
+}
 input.onButtonPressed(Button.AB, function () {
     player_choice = 3
     basic.showIcon(IconNames.Square)
@@ -175,12 +221,12 @@ function Bo3 () {
         }
         if (player_score == 2) {
             result = 1
+            history_list.push(result)
             basic.showString("YOU WIN")
             basic.clearScreen()
             break;
         }
     }
-    history_list.push(result)
 }
 input.onGesture(Gesture.Shake, function () {
     Bo3()
@@ -210,6 +256,7 @@ function endless () {
 }
 let result = 0
 let max_score = 0
+let lose = 0
 let current_second = 0
 let seconds = 0
 let bot_score = 0
@@ -220,27 +267,7 @@ let bot_choice = 0
 let high_score_list: number[] = []
 let history_list : number[] = []
 let win = 0
-let lose = 0
 high_score_list = [0]
 history_list = []
-music.startMelody(music.builtInMelody(Melodies.Prelude), MelodyOptions.OnceInBackground)
-music.setVolume(127)
-basic.showString("R")
-basic.pause(700)
-basic.showLeds(`
-    . . . . .
-    . . . # #
-    # # # # #
-    . . . # #
-    . . . . .
-    `)
-basic.pause(1000)
-basic.showString("P")
-basic.pause(700)
-basic.showIcon(IconNames.Square)
-basic.pause(1000)
-basic.showString("S")
-basic.pause(700)
-basic.showIcon(IconNames.Scissors)
-basic.pause(1000)
-basic.clearScreen()
+introduction()
+tutorial()
