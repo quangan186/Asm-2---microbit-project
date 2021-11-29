@@ -5,9 +5,9 @@ function player_bot () {
     } else if (bot_choice == 2) {
         basic.showLeds(`
             . . . . .
-            . . . # #
-            # # # # #
-            . . . # #
+            . # # # .
+            . # # # .
+            . # # # .
             . . . . .
             `)
     } else {
@@ -24,9 +24,9 @@ function introduction () {
     basic.pause(700)
     basic.showLeds(`
         . . . . .
-        . . . # #
-        # # # # #
-        . . . # #
+        . # # # .
+        . # # # .
+        . # # # .
         . . . . .
         `)
     basic.pause(1000)
@@ -133,9 +133,9 @@ function tutorial () {
     basic.showString("=")
     basic.showLeds(`
         . . . . .
-        . . . # #
-        # # # # #
-        . . . # #
+        . # # # .
+        . # # # .
+        . # # # .
         . . . . .
         `)
     basic.pause(500)
@@ -194,9 +194,9 @@ input.onButtonPressed(Button.B, function () {
     player_choice = 2
     basic.showLeds(`
         . . . . .
-        . . . # #
-        # # # # #
-        . . . # #
+        . # # # .
+        . # # # .
+        . # # # .
         . . . . .
         `)
 })
